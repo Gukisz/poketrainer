@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PokemonDAO {
 
-    public void createPokemon(Pokemon pokemon, Integer userId) throws Exception {
+    public static void createPokemon(Pokemon pokemon, Integer userId) throws Exception {
         String sql = "INSERT INTO pokemon (name, type, level, user_id) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
@@ -24,7 +24,7 @@ public class PokemonDAO {
         }
     }
 
-    public ArrayList<Pokemon> getPokemonsByUser(int userId) throws Exception {
+    public static ArrayList<Pokemon> getPokemonsByUser(int userId) throws Exception {
         ArrayList<Pokemon> tb_pokemon = new ArrayList<>();
         String sql = "SELECT * FROM tb_pokemon WHERE user_id = ?";
 
@@ -48,7 +48,7 @@ public class PokemonDAO {
         return tb_pokemon;
     }
 
-    public void updatePokemon(Pokemon pokemon) throws Exception {
+    public static void updatePokemon(Pokemon pokemon) throws Exception {
         String sql = "UPDATE tb_pokemon SET name = ?, type = ?, level = ? WHERE id = ?";
 
         try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
@@ -62,7 +62,7 @@ public class PokemonDAO {
         }
     }
 
-    public void deletePokemon(int id) throws Exception {
+    public static void deletePokemon(int id) throws Exception {
         String sql = "DELETE FROM tb_pokemon WHERE id = ?";
 
         try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
@@ -73,7 +73,7 @@ public class PokemonDAO {
         }
     }
 
-    public Pokemon getPokemonById(int id) throws Exception {
+    public static Pokemon getPokemonById(int id) throws Exception {
         String sql = "SELECT * FROM tb_pokemon WHERE id = ?";
 
         try (PreparedStatement stmt = DatabaseConnection.getConnection().prepareStatement(sql)) {
