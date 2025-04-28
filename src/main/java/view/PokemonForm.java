@@ -6,18 +6,22 @@ import java.awt.*;
 import model.Pokemon;
 import model.User;
 
-public class TarefaForm extends javax.swing.JFrame {
+public class PokemonForm extends javax.swing.JFrame {
     
     private User user;
     private Pokemon pokemon;
-    public TarefaForm(User usuario) {
+    private PokemonController pokemonController = new PokemonController();
+
+    public PokemonForm(User usuario) {
+        this.setTitle("Adicionando pokémon");
         this.user = usuario;
         initComponents();
         setLocationRelativeTo(null);
         setBackground(new Color(240, 240, 240)); 
     }
     
-    public TarefaForm(User usuario, Pokemon pokemon) {
+    public PokemonForm(User usuario, Pokemon pokemon) {
+        this.setTitle("Atualizando pokémon");
         this.user = usuario;
         initComponents();
         setLocationRelativeTo(null); 
@@ -84,8 +88,8 @@ public class TarefaForm extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pokemonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                        .addComponent(pokemonLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(botaoSalvar)
                         .addGap(19, 19, 19))))
         );
@@ -124,9 +128,9 @@ public class TarefaForm extends javax.swing.JFrame {
                 return;
             } 
             if (pokemon == null) {
-               PokemonController.createPokemon(name, type, level, user.getId());
+               pokemonController.createPokemon(name, type, level, user.getId());
             } else {
-                PokemonController.updatePokemon(pokemon.getId(),name,type,level );
+                pokemonController.updatePokemon(pokemon.getId(),name,type,level );
             }    
   
             new MainView(user).setVisible(true);

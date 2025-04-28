@@ -49,7 +49,7 @@ public class DatabaseConnection {
                 "id INT AUTO_INCREMENT PRIMARY KEY," +
                 "name VARCHAR(255) NOT NULL," +
                 "type VARCHAR(255) NOT NULL," +
-                "level INT NOT NULL" +
+                "level INT NOT NULL," +
                 "user_id INT NOT NULL," +
                 " FOREIGN KEY (user_id) REFERENCES tb_users(id) ON DELETE CASCADE);";
 

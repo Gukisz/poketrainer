@@ -14,8 +14,15 @@ import model.Pokemon;
  */
 
 public class PokemonController {
+    private PokemonDAO pokemonDAO;
 
-    public static void createPokemon(String name, String type, int level, int userId) throws Exception {
+    public PokemonController() {
+       this.pokemonDAO = new PokemonDAO();
+    }
+    
+    
+    
+    public void createPokemon(String name, String type, int level, int userId) throws Exception {
         if (name.isEmpty() || type.isEmpty()) {
             throw new Exception("O nome e o tipo do Pokémon não podem estar vazios");
         }
@@ -23,10 +30,10 @@ public class PokemonController {
             throw new Exception("O nível do Pokémon deve ser maior que zero");
         }
         Pokemon pokemon = new Pokemon(name, type, level);
-        PokemonDAO.createPokemon(pokemon, userId);
+        pokemonDAO.createPokemon(pokemon, userId);
     }
 
-    public static void updatePokemon(int id, String name, String type, int level) throws Exception {
+    public void updatePokemon(int id, String name, String type, int level) throws Exception {
         if (name.isEmpty() || type.isEmpty()) {
             throw new Exception("O nome e o tipo do Pokémon não podem estar vazios");
         }
@@ -34,19 +41,19 @@ public class PokemonController {
             throw new Exception("O nível do Pokémon deve ser maior que zero");
         }
         Pokemon pokemon = new Pokemon(id, name, type, level);
-        PokemonDAO.updatePokemon(pokemon);
+        pokemonDAO.updatePokemon(pokemon);
     }
 
-    public static ArrayList<Pokemon> getByUser(int userId) throws Exception {
-        return PokemonDAO.getPokemonsByUser(userId);
+    public ArrayList<Pokemon> getByUser(int userId) throws Exception {
+        return pokemonDAO.getPokemonsByUser(userId);
     }
 
-    public static void removePokemon(int id) throws Exception {
-        PokemonDAO.deletePokemon(id);
+    public void removePokemon(int id) throws Exception {
+        pokemonDAO.deletePokemon(id);
     }
 
-    public static Pokemon getPokemonByID(int id) throws Exception {
-        return PokemonDAO.getPokemonById(id);
+    public Pokemon getPokemonByID(int id) throws Exception {
+        return pokemonDAO.getPokemonById(id);
     }
 }
 

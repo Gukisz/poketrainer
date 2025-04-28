@@ -7,7 +7,10 @@ import model.User;
 
 public class LoginView extends javax.swing.JFrame {
 
+    private UserController userController;
     public LoginView() {
+        this.setTitle("PokeTrainer");
+        this.userController = new UserController();
         initComponents();
         setLocationRelativeTo(null); // Centraliza a janela
     }
@@ -104,7 +107,7 @@ public class LoginView extends javax.swing.JFrame {
         String password = new String(campoSenha.getPassword());
         
         try {
-            User usuario = UserController.login(username, password);
+            User usuario = userController.login(username, password);
             
             new MainView(usuario).setVisible(true);
             this.dispose();
@@ -121,7 +124,7 @@ public class LoginView extends javax.swing.JFrame {
             return;
         }
         try {
-            UserController.createUser(username, password);
+            userController.createUser(username, password);
             JOptionPane.showMessageDialog(null,"Usuário criado com sucesso.");
         } catch (Exception e) {
             showErrorMessage(e.getMessage());
