@@ -7,6 +7,7 @@ package controller;
 import dao.PokemonDAO;
 import java.util.ArrayList;
 import model.Pokemon;
+import service.PokemonService;
 
 /**
  *
@@ -23,23 +24,15 @@ public class PokemonController {
     
     
     public void createPokemon(String name, String type, int level, int userId) throws Exception {
-        if (name.isEmpty() || type.isEmpty()) {
-            throw new Exception("O nome e o tipo do Pokémon não podem estar vazios");
-        }
-        if (level < 1) {
-            throw new Exception("O nível do Pokémon deve ser maior que zero");
-        }
+        PokemonService.validateName(name);
+        PokemonService.validateLevel(level);
         Pokemon pokemon = new Pokemon(name, type, level);
         pokemonDAO.createPokemon(pokemon, userId);
     }
 
     public void updatePokemon(int id, String name, String type, int level) throws Exception {
-        if (name.isEmpty() || type.isEmpty()) {
-            throw new Exception("O nome e o tipo do Pokémon não podem estar vazios");
-        }
-        if (level < 1) {
-            throw new Exception("O nível do Pokémon deve ser maior que zero");
-        }
+        PokemonService.validateName(name);
+        PokemonService.validateLevel(level);
         Pokemon pokemon = new Pokemon(id, name, type, level);
         pokemonDAO.updatePokemon(pokemon);
     }

@@ -18,7 +18,7 @@ public class Pokemon {
         this.type = type;
         this.level = level;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
