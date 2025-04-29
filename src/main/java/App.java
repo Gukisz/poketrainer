@@ -1,6 +1,4 @@
 
-import database.DatabaseConnection;
-import java.sql.Connection;
 import view.LoginView;
 
 /*

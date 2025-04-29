@@ -299,7 +299,7 @@ public final class MainView extends javax.swing.JFrame {
           new PokemonForm(user, pokemon).setVisible(true);
           this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma tarefa para editar!");
+            JOptionPane.showMessageDialog(this, "Selecione um pokemon para editar!");
         }
     }//GEN-LAST:event_botaoEditarActionPerformed
 
@@ -315,7 +315,7 @@ public final class MainView extends javax.swing.JFrame {
             showErrorMessage(e.getMessage());
         }
       } else {
-		showErrorMessage("Selecione uma tarefa!");
+		showErrorMessage("Selecione um Pokemon!");
       }
         
       attTablePokemon();
